@@ -1,0 +1,44 @@
+{
+  "name": "pomo-clock",
+  "version": "1.0.0",
+  "description": "一个可爱的番茄工作法计时器桌面应用",
+  "main": "index.js",
+  "bin": {
+    "pomo-clock": "./bin/pomo-clock.js",
+    "pomo": "./bin/pomo-clock.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/install.js",
+    "uninstall": "node scripts/uninstall.js"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "productivity",
+    "番茄工作法",
+    "计时器"
+  ],
+  "author": "kevin-zhangwen",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevin-zhangwen/pomo-clock.git"
+  },
+  "files": [
+    "bin/",
+    "scripts/",
+    "README.md"
+  ]
+}
