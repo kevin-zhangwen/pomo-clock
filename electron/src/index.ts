@@ -4,7 +4,6 @@ import type { MenuItemConstructorOptions } from 'electron';
 import { app, MenuItem } from 'electron';
 import electronIsDev from 'electron-is-dev';
 import unhandled from 'electron-unhandled';
-import { autoUpdater } from 'electron-updater';
 
 import { ElectronCapacitorApp, setupContentSecurityPolicy, setupReloadWatcher } from './setup';
 
@@ -46,13 +45,10 @@ if (electronIsDev) {
   // Initialize our app, build windows, and load content.
   await myCapacitorApp.init();
   // Check for updates if we are in a packaged app (only if publish is configured).
-  if (!electronIsDev) {
-    try {
-      autoUpdater.checkForUpdatesAndNotify();
-    } catch (error) {
-      console.log('Auto-updater not configured, skipping update check.');
-    }
-  }
+  // Disable auto-updater if no update config is provided to avoid ENOENT errors.
+  // if (!electronIsDev) {
+  //   autoUpdater.checkForUpdatesAndNotify();
+  // }
 })();
 
 // Handle when all of our windows are close (platforms have their own expectations).
