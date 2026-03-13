@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import AiAssistant from './components/AiAssistant.vue'
 </script>
 
 <template>
@@ -67,6 +68,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <main class="main-content">
       <RouterView />
     </main>
+    <AiAssistant />
   </div>
 </template>
 

@@ -334,7 +334,7 @@ export class WhiteNoiseGenerator {
             node.stop()
           }
           node.disconnect()
-        } catch (e) {
+        } catch {
           // 忽略已断开连接的节点
         }
       })
