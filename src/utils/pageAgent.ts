@@ -8,26 +8,23 @@ export interface PageAgentOptions {
   language?: 'en-US' | 'zh-CN'
 }
 
+// API 配置常量
+const DEFAULT_API_BASE_URL = 'https://coding.dashscope.aliyuncs.com/apps/anthropic'
+const DEFAULT_MODEL = 'qwen-plus'
+const DEMO_API_BASE_URL = 'https://page-agent-demo.alibaba-inc.com/api/v1'
+const DEMO_MODEL = 'demo'
+
 let pageAgentInstance: PageAgent | null = null
 
-// 从环境变量获取 API Key
-const getApiKeyFromEnv = (): string => {
-  // Vite 环境变量
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const viteKey = (import.meta as any).env?.VITE_DASHSCOPE_API_KEY
-  if (viteKey) return viteKey
-
-  return ''
-}
+// 从环境变量获取 API Key（在模块加载时缓存）
+const ENV_API_KEY: string = import.meta.env.VITE_DASHSCOPE_API_KEY ?? ''
 
 export function createPageAgent(options: PageAgentOptions = {}): PageAgent {
-  const envApiKey = getApiKeyFromEnv()
-
   const {
-    useDemo = !envApiKey, // 如果没有配置 API Key，默认使用 Demo
-    apiKey = envApiKey,
-    baseURL = 'https://coding.dashscope.aliyuncs.com/apps/anthropic',
-    model = 'qwen-plus',
+    useDemo = !ENV_API_KEY, // 如果没有配置 API Key，默认使用 Demo
+    apiKey = ENV_API_KEY,
+    baseURL = DEFAULT_API_BASE_URL,
+    model = DEFAULT_MODEL,
     language = 'zh-CN',
   } = options
 
@@ -38,9 +35,9 @@ export function createPageAgent(options: PageAgentOptions = {}): PageAgent {
 
   const config: AgentConfig = useDemo
     ? {
-        baseURL: 'https://page-agent-demo.alibaba-inc.com/api/v1',
+        baseURL: DEMO_API_BASE_URL,
         apiKey: 'demo',
-        model: 'demo',
+        model: DEMO_MODEL,
         language,
       }
     : {

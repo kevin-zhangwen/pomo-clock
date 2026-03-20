@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { createPageAgent, disposePageAgent, type PageAgentOptions } from '@/utils/pageAgent'
+import { createPageAgent, getPageAgent, disposePageAgent, type PageAgentOptions } from '@/utils/pageAgent'
 
 const props = defineProps<{
   options?: PageAgentOptions
@@ -35,8 +35,8 @@ function togglePanel() {
     initializeAgent()
   }
 
-  const agent = createPageAgent(props.options)
-  if (agent.panel) {
+  const agent = getPageAgent()
+  if (agent?.panel) {
     if (isVisible.value) {
       agent.panel.hide()
     } else {
