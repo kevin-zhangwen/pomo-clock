@@ -20,6 +20,7 @@
     "@capacitor/core": "^8.2.0",
     "@capacitor/splash-screen": "^8.0.1",
     "echarts": "^6.0.0",
+    "page-agent": "^1.5.6",
     "pinia": "^3.0.4",
     "vue": "^3.5.29",
     "vue-echarts": "^8.0.1",
