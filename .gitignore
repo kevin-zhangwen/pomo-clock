@@ -50,3 +50,9 @@ electron/build
 electron/release
 electron/app
 
+# iOS
+ios/App/Pods
+ios/App/App/public
+ios/App/App/capacitor.config.json
+ios/.DS_Store
+ios/App/.DS_Store

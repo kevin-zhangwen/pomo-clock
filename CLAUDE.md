@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Pomodoro timer (番茄时钟) application built with Vue 3, Vite, Pinia, and Capacitor. The app features a timer, task management, statistics tracking, and ambient background sounds (rain, cafe, forest). It can be deployed as a web app or packaged as a desktop app via Electron.
+A Pomodoro timer (番茄时钟) application built with Vue 3, Vite, Pinia, and Capacitor. The app features a timer, task management, statistics tracking, and ambient background sounds (rain, cafe, forest). It can be deployed as a web app, iOS app, or packaged as a desktop app via Electron.
 
 ## Commands
 
@@ -13,7 +13,45 @@ npm run dev          # Start dev server with hot reload
 npm run build        # Type-check and build for production
 npm run preview      # Preview production build
 npm run lint         # Run oxlint (fast) then eslint with auto-fix
+
+# iOS
+npm run ios:prepare  # Build and copy web assets to iOS
+npm run ios:open     # Open Xcode project
+npm run ios:sync     # Sync Capacitor plugins to iOS
+npm run ios:run      # Run iOS app on simulator/device
+npm run ios:build    # Build and sync iOS project
 ```
+
+## iOS Build Guide
+
+### Prerequisites
+- macOS with Xcode 15+ installed
+- Apple Developer account (for device deployment)
+- CocoaPods: `sudo gem install cocoapods`
+
+### Build Steps
+
+1. **Prepare the iOS project:**
+   ```bash
+   npm run ios:prepare
+   ```
+
+2. **Open Xcode:**
+   ```bash
+   npm run ios:open
+   ```
+
+3. **Configure signing in Xcode:**
+   - Select "App" target
+   - Go to "Signing & Capabilities" tab
+   - Select your Team and configure signing certificate
+
+4. **Run on simulator or device:**
+   - In Xcode: Select target device and press Cmd+R
+   - Or via CLI: `npm run ios:run`
+
+### App Icon
+Replace `ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png` with your 1024x1024 app icon.
 
 ## Architecture
 
@@ -22,6 +60,7 @@ npm run lint         # Run oxlint (fast) then eslint with auto-fix
 - **State Management**: Pinia stores with localStorage persistence
 - **Routing**: Vue Router with 4 views: Timer, Tasks, Stats, Settings
 - **Charts**: ECharts via vue-echarts for statistics visualization
+- **Mobile**: Capacitor for iOS native builds
 - **Desktop**: Capacitor + @capacitor-community/electron for native desktop builds
 
 ### Store Architecture (src/stores/)

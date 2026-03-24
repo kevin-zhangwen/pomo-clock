@@ -12,6 +12,14 @@ const config: CapacitorConfig = {
       androidScaleType: 'CENTER_CROP',
     },
   },
+  ios: {
+    contentInset: 'automatic',
+    allowsLinkPreview: false,
+    preferredContentMode: 'mobile',
+  },
+  server: {
+    iosScheme: 'https',
+  },
 };
 
 export default config;
