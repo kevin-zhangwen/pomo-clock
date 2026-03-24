@@ -1,6 +1,6 @@
 {
   "name": "pomo-clock",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,13 +11,19 @@
     "type-check": "vue-tsc --build",
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
-    "lint:eslint": "eslint . --fix --cache"
+    "lint:eslint": "eslint . --fix --cache",
+    "ios:prepare": "npm run build && npx cap copy ios",
+    "ios:open": "npx cap open ios",
+    "ios:sync": "npx cap sync ios",
+    "ios:run": "npx cap run ios",
+    "ios:build": "npm run build && npx cap sync ios"
   },
   "dependencies": {
     "@capacitor-community/electron": "^5.0.1",
     "@capacitor/app": "^8.0.1",
     "@capacitor/cli": "^8.2.0",
     "@capacitor/core": "^8.2.0",
+    "@capacitor/ios": "^8.2.0",
     "@capacitor/splash-screen": "^8.0.1",
     "echarts": "^6.0.0",
     "page-agent": "^1.5.6",
